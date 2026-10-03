@@ -1,11 +1,11 @@
 {
-    "spider": "https://ghproxy.net/raw.githubusercontent.com/edc8/jav/main/spider.jar",
+    "spider": "https://raw.githubusercontent.com/edc8/jav/main/spider.jar",
     "sites": [
         {
             "key": "py_57短剧",
             "name": "🐍 57短剧",
             "type": 3,
-            "api": "57短剧.py",
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/57短剧.py",
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1
