@@ -2,10 +2,388 @@
     "spider": "https://ghproxy.net/raw.githubusercontent.com/FongMi/CatVodSpider/main/jar/custom_spider.jar",
     "sites": [
         {
+            "key": "py_小红薯APP🔞TG群：@tvshare23",
+            "name": "🐍 小红薯APP🔞TG群：@tvshare23",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/小红薯APP🔞TG群：@tvshare23.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_蘑菇影院",
+            "name": "🐍 蘑菇影院",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/蘑菇影院.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_快乐星球",
+            "name": "🐍 快乐星球",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/快乐星球.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_18cm",
+            "name": "🐍 18cm",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/18cm.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_色花堂图鉴",
+            "name": "🐍 色花堂图鉴",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/色花堂图鉴.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_338TV",
+            "name": "🐍 338TV",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/338TV.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_xx9",
+            "name": "🐍 xx9",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/xx9.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_luanluncangku",
+            "name": "🐍 luanluncangku",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/luanluncangku.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_91SexTube",
+            "name": "🐍 91SexTube",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/91SexTube.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_香女园",
+            "name": "🐍 香女园",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/香女园.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_shewo",
+            "name": "🐍 shewo",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/shewo.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_花真好影视",
+            "name": "🐍 花真好影视",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/花真好影视.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_大香蕉",
+            "name": "🐍 大香蕉",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/大香蕉.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_AdultpornaAVTG群：@tvshare23",
+            "name": "🐍 AdultpornaAVTG群：@tvshare23",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/AdultpornaAVTG群：@tvshare23.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_91heiliao",
+            "name": "🐍 91heiliao",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/91heiliao.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_天天A片",
+            "name": "🐍 天天A片",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/天天A片.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_花千色",
+            "name": "🐍 花千色",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/花千色.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_乱伦仓库🔞TG群：@tvshare23",
+            "name": "🐍 乱伦仓库🔞TG群：@tvshare23",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/乱伦仓库🔞TG群：@tvshare23.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_淫母原味🔞TG群：@tvshare23",
+            "name": "🐍 淫母原味🔞TG群：@tvshare23",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/淫母原味🔞TG群：@tvshare23.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_风月阁",
+            "name": "🐍 风月阁",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/风月阁.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_溏心次元🔞TG群：@tvshare23",
+            "name": "🐍 溏心次元🔞TG群：@tvshare23",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/溏心次元🔞TG群：@tvshare23.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_2048核基地🔞TG群：@tvshare23",
+            "name": "🐍 2048核基地🔞TG群：@tvshare23",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/2048核基地🔞TG群：@tvshare23.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_推特APP🔞TG群：@tvshare23",
+            "name": "🐍 推特APP🔞TG群：@tvshare23",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/推特APP🔞TG群：@tvshare23.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_梦TV",
+            "name": "🐍 梦TV",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/梦TV.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_91rebao",
+            "name": "🐍 91rebao",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/91rebao.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_zhenshi",
+            "name": "🐍 zhenshi",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/zhenshi.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_午夜剧场_ok影视全量版",
+            "name": "🐍 午夜剧场_ok影视全量版",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/午夜剧场_ok影视全量版.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_极品少女🔞TG群：@tvshare23",
+            "name": "🐍 极品少女🔞TG群：@tvshare23",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/极品少女🔞TG群：@tvshare23.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_优质粉嫩鲍🔞TG群：@tvshare23",
+            "name": "🐍 优质粉嫩鲍🔞TG群：@tvshare23",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/优质粉嫩鲍🔞TG群：@tvshare23.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_狼友天堂",
+            "name": "🐍 狼友天堂",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/狼友天堂.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_haijiao",
+            "name": "🐍 haijiao",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/haijiao.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_吉利猫",
+            "name": "🐍 吉利猫",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/吉利猫.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_七区",
+            "name": "🐍 七区",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/七区.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_tokyomotion",
+            "name": "🐍 tokyomotion",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/tokyomotion.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_CEOTV",
+            "name": "🐍 CEOTV",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/CEOTV.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_草榴社区🔞TG群：@tvshare23",
+            "name": "🐍 草榴社区🔞TG群：@tvshare23",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/草榴社区🔞TG群：@tvshare23.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_成人卡通(746分类)",
+            "name": "🐍 成人卡通(746分类)",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/成人卡通(746分类).py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_风月夜禁脔",
+            "name": "🐍 风月夜禁脔",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/风月夜禁脔.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_57短剧",
             "name": "🐍 57短剧",
             "type": 3,
             "api": "https://raw.githubusercontent.com/edc8/jav/main/57短剧.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_lu上天",
+            "name": "🐍 lu上天",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/lu上天.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_9g88x🔞TG群：@tvshare23",
+            "name": "🐍 9g88x🔞TG群：@tvshare23",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/9g88x🔞TG群：@tvshare23.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_sewo",
+            "name": "🐍 sewo",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/sewo.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_丝袜乐土🔞TG群：@tvshare23",
+            "name": "🐍 丝袜乐土🔞TG群：@tvshare23",
+            "type": 3,
+            "api": "https://raw.githubusercontent.com/edc8/jav/main/丝袜乐土🔞TG群：@tvshare23.py",
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1
