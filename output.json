@@ -1,5 +1,5 @@
 {
-    "spider": "https://raw.githubusercontent.com/edc8/jav/main/spider.jar",
+    "spider": "https://raw.githubusercontent.com/fantaiying/ext/main/jar/custom_spider.jar",
     "sites": [
         {
             "key": "py_57短剧",
