@@ -19,8 +19,9 @@ def generate_config():
             }
             sites.append(site)
 
+    # 借用网络上公开稳定的 jar 综合解析包
     config = {
-        "spider": f"{BASE_URL}/spider.jar",
+        "spider": "https://raw.githubusercontent.com/fantaiying/ext/main/jar/custom_spider.jar",
         "sites": sites,
         "parses": [],
         "rules": []
