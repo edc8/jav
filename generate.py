@@ -19,9 +19,9 @@ def generate_config():
             }
             sites.append(site)
 
-    # 借用网络上公开稳定的 jar 综合解析包
+    # 替换为当前依然有效的稳定公共 jar 地址
     config = {
-        "spider": "https://raw.githubusercontent.com/fantaiying/ext/main/jar/custom_spider.jar",
+        "spider": "https://ghproxy.net/raw.githubusercontent.com/FongMi/CatVodSpider/main/jar/custom_spider.jar",
         "sites": sites,
         "parses": [],
         "rules": []
