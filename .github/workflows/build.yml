@@ -1,45 +1,32 @@
-import os
-import json
+name: Auto Build TVBox Config
 
-# 定义你的 GitHub 仓库基础直链前缀（请根据你的用户名和仓库名修改）
-# 这里以你的仓库 edc8/jav 的 jsdelivr 或 ghproxy 加速链为例，也可以用原始 raw 链接
-BASE_URL = "https://raw.githubusercontent.com/edc8/jav/main"
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *'
 
-def generate_config():
-    sites = []
-    
-    # 遍历当前目录下的所有文件
-    for filename in os.listdir('.'):
-        if filename.endswith('.py') and filename != 'generate.py':
-            # 去掉 .py 后缀作为名称
-            name = filename[:-3]
-            
-            # 构造 TVBox 要求的 Python 蜘蛛配置
-            site = {
-                "key": f"py_{name}",
-                "name": f"🐍 {name}",
-                "type": 3,
-                # 关键：这里必须是该 .py 文件的完整远程直链，不能只写文件名
-                "api": f"{BASE_URL}/{filename}",
-                "searchable": 1,
-                "quickSearch": 1,
-                "filterable": 1
-            }
-            sites.append(site)
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码仓库
+        uses: actions/checkout@v3
 
-    # 组装完整的 TVBox 配置结构
-    config = {
-        "spider": f"{BASE_URL}/spider.jar", # 如果你没有 spider.jar，也可以留空或按需调整
-        "sites": sites,
-        "parses": [],
-        "rules": []
-    }
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    # 写入 output.json 文件，确保中文正常显示
-    with open('output.json', 'w', encoding='utf-8') as f:
-        json.dump(config, f, ensure_ascii=False, indent=4)
-    
-    print(f"成功生成 output.json，共包含 {len(sites)} 个 Python 蜘蛛源。")
+      - name: 运行自动生成脚本
+        run: python generate.py
 
-if __name__ == '__main__':
-    generate_config()
+      - name: 自动提交并推送生成的 output.json
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add output.json
+          git commit -m "Auto: Update TVBox config" || echo "No changes to commit"
+          git push
