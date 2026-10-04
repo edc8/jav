@@ -56,15 +56,6 @@
             "filterable": 1
         },
         {
-            "key": "py_大香蕉",
-            "name": "🐍 大香蕉",
-            "type": 3,
-            "api": "https://raw.githubusercontent.com/edc8/jav/main/大香蕉.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_天天A片",
             "name": "🐍 天天A片",
             "type": 3,
