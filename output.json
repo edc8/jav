@@ -20,15 +20,6 @@
             "filterable": 1
         },
         {
-            "key": "py_花真好影视",
-            "name": "🐍 花真好影视",
-            "type": 3,
-            "api": "https://raw.githubusercontent.com/edc8/jav/main/花真好影视.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_风月阁",
             "name": "🐍 风月阁",
             "type": 3,
