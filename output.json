@@ -74,15 +74,6 @@
             "filterable": 1
         },
         {
-            "key": "py_推特APP🔞TG群：@tvshare23",
-            "name": "🐍 推特APP🔞TG群：@tvshare23",
-            "type": 3,
-            "api": "https://raw.githubusercontent.com/edc8/jav/main/推特APP🔞TG群：@tvshare23.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_梦TV",
             "name": "🐍 梦TV",
             "type": 3,
