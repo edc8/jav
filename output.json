@@ -128,15 +128,6 @@
             "filterable": 1
         },
         {
-            "key": "py_午夜剧场_ok影视全量版",
-            "name": "🐍 午夜剧场_ok影视全量版",
-            "type": 3,
-            "api": "https://raw.githubusercontent.com/edc8/jav/main/午夜剧场_ok影视全量版.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_极品少女🔞TG群：@tvshare23",
             "name": "🐍 极品少女🔞TG群：@tvshare23",
             "type": 3,
