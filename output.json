@@ -101,15 +101,6 @@
             "filterable": 1
         },
         {
-            "key": "py_91heiliao",
-            "name": "🐍 91heiliao",
-            "type": 3,
-            "api": "https://raw.githubusercontent.com/edc8/jav/main/91heiliao.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_天天A片",
             "name": "🐍 天天A片",
             "type": 3,
