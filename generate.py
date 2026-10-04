@@ -1,11 +1,15 @@
 import os
 import json
 
-BASE_URL = "https://raw.githubusercontent.com/edc8/jav/main"
+# 如果你的 .py 文件已经移动到了 18 文件夹，这里需要加上 /18
+BASE_URL = "https://raw.githubusercontent.com/edc8/jav/main/18"
 
 def generate_config():
     sites = []
-    for filename in os.listdir('.'):
+    # 如果你的脚本也在根目录，而 py 文件在 18 文件夹，需要遍历 18 目录
+    target_dir = '18' if os.path.exists('18') else '.'
+    
+    for filename in os.listdir(target_dir):
         if filename.endswith('.py') and filename != 'generate.py':
             name = filename[:-3]
             site = {
@@ -19,9 +23,9 @@ def generate_config():
             }
             sites.append(site)
 
-    # 替换为当前依然有效的稳定公共 jar 地址
+    # 已将 jar 包引用修正为正确的 raw 直链
     config = {
-        "spider": "https://ghproxy.net/raw.githubusercontent.com/FongMi/CatVodSpider/main/jar/custom_spider.jar",
+        "spider": "https://raw.githubusercontent.com/edc8/jav/main/custom_spider.jar",
         "sites": sites,
         "parses": [],
         "rules": []
