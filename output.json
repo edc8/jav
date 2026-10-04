@@ -101,6 +101,15 @@
             "filterable": 1
         },
         {
+            "key": "py_javdb",
+            "name": "🐍 javdb",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/javdb.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_大香蕉",
             "name": "🐍 大香蕉",
             "type": 3,
@@ -236,6 +245,15 @@
             "filterable": 1
         },
         {
+            "key": "py_owoav",
+            "name": "🐍 owoav",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/owoav.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_浮生影院",
             "name": "🐍 浮生影院",
             "type": 3,
@@ -258,6 +276,15 @@
             "name": "🐍 狼友天堂",
             "type": 3,
             "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/狼友天堂.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_jable",
+            "name": "🐍 jable",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/jable.py",
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1
