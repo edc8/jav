@@ -23,9 +23,9 @@ def generate_config():
             }
             sites.append(site)
 
-    # 已将 jar 包引用修正为正确的 raw 直链
+    # 已将 jar 包引用修改为指定的代理加速地址
     config = {
-        "spider": "https://raw.githubusercontent.com/edc8/jav/main/custom_spider.jar",
+        "spider": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/custom_spider.jar",
         "sites": sites,
         "parses": [],
         "rules": []
