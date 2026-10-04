@@ -281,15 +281,6 @@
             "filterable": 1
         },
         {
-            "key": "py_jable",
-            "name": "🐍 jable",
-            "type": 3,
-            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/jable.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_haijiao",
             "name": "🐍 haijiao",
             "type": 3,
