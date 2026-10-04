@@ -173,15 +173,6 @@
             "filterable": 1
         },
         {
-            "key": "py_91rebao",
-            "name": "🐍 91rebao",
-            "type": 3,
-            "api": "https://raw.githubusercontent.com/edc8/jav/main/91rebao.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_zhenshi",
             "name": "🐍 zhenshi",
             "type": 3,
