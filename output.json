@@ -29,15 +29,6 @@
             "filterable": 1
         },
         {
-            "key": "py_18cm",
-            "name": "🐍 18cm",
-            "type": 3,
-            "api": "https://raw.githubusercontent.com/edc8/jav/main/18cm.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_色花堂图鉴",
             "name": "🐍 色花堂图鉴",
             "type": 3,
