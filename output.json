@@ -11,15 +11,6 @@
             "filterable": 1
         },
         {
-            "key": "py_快乐星球",
-            "name": "🐍 快乐星球",
-            "type": 3,
-            "api": "https://raw.githubusercontent.com/edc8/jav/main/快乐星球.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_色花堂图鉴",
             "name": "🐍 色花堂图鉴",
             "type": 3,
