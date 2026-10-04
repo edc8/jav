@@ -56,15 +56,6 @@
             "filterable": 1
         },
         {
-            "key": "py_狼友天堂",
-            "name": "🐍 狼友天堂",
-            "type": 3,
-            "api": "https://raw.githubusercontent.com/edc8/jav/main/狼友天堂.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_草榴社区🔞TG群：@tvshare23",
             "name": "🐍 草榴社区🔞TG群：@tvshare23",
             "type": 3,
