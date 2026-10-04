@@ -38,15 +38,6 @@
             "filterable": 1
         },
         {
-            "key": "py_338TV",
-            "name": "🐍 338TV",
-            "type": 3,
-            "api": "https://raw.githubusercontent.com/edc8/jav/main/338TV.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_xx9",
             "name": "🐍 xx9",
             "type": 3,
