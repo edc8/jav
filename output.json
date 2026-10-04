@@ -74,15 +74,6 @@
             "filterable": 1
         },
         {
-            "key": "py_梦TV",
-            "name": "🐍 梦TV",
-            "type": 3,
-            "api": "https://raw.githubusercontent.com/edc8/jav/main/梦TV.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_狼友天堂",
             "name": "🐍 狼友天堂",
             "type": 3,
