@@ -47,15 +47,6 @@
             "filterable": 1
         },
         {
-            "key": "py_luanluncangku",
-            "name": "🐍 luanluncangku",
-            "type": 3,
-            "api": "https://raw.githubusercontent.com/edc8/jav/main/luanluncangku.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_香女园",
             "name": "🐍 香女园",
             "type": 3,
