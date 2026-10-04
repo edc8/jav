@@ -254,15 +254,6 @@
             "filterable": 1
         },
         {
-            "key": "py_lu上天",
-            "name": "🐍 lu上天",
-            "type": 3,
-            "api": "https://raw.githubusercontent.com/edc8/jav/main/lu上天.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_sewo",
             "name": "🐍 sewo",
             "type": 3,
