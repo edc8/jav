@@ -29,15 +29,6 @@
             "filterable": 1
         },
         {
-            "key": "py_花千色",
-            "name": "🐍 花千色",
-            "type": 3,
-            "api": "https://raw.githubusercontent.com/edc8/jav/main/花千色.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_风月阁",
             "name": "🐍 风月阁",
             "type": 3,
