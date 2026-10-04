@@ -209,15 +209,6 @@
             "filterable": 1
         },
         {
-            "key": "py_haijiao",
-            "name": "🐍 haijiao",
-            "type": 3,
-            "api": "https://raw.githubusercontent.com/edc8/jav/main/haijiao.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_吉利猫",
             "name": "🐍 吉利猫",
             "type": 3,
