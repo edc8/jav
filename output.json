@@ -1,16 +1,6 @@
 {
     "spider": "https://ghproxy.net/raw.githubusercontent.com/FongMi/CatVodSpider/main/jar/custom_spider.jar",
-    "sites": [
-        {
-            "key": "py_香女园",
-            "name": "🐍 香女园",
-            "type": 3,
-            "api": "https://raw.githubusercontent.com/edc8/jav/main/香女园.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        }
-    ],
+    "sites": [],
     "parses": [],
     "rules": []
 }
