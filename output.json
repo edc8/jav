@@ -2,15 +2,6 @@
     "spider": "https://ghproxy.net/raw.githubusercontent.com/FongMi/CatVodSpider/main/jar/custom_spider.jar",
     "sites": [
         {
-            "key": "py_小红薯APP🔞TG群：@tvshare23",
-            "name": "🐍 小红薯APP🔞TG群：@tvshare23",
-            "type": 3,
-            "api": "https://raw.githubusercontent.com/edc8/jav/main/小红薯APP🔞TG群：@tvshare23.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_蘑菇影院",
             "name": "🐍 蘑菇影院",
             "type": 3,
