@@ -132,17 +132,14 @@ class Spider(_BaseSpider):
             if not pic:
                 pic = self._re_one(r'preview_url:\s*[\'"]([^\'"]+)[\'"]', html) or ""
             duration = self._re_one(r'class="duration"[^>]*>([^<]+)<', html) or ""
-            play_url = self._extract_play(html)
-            if not play_url:
-                play_url = vod_id
             results.append({
                 "vod_id": vod_id,
                 "vod_name": title,
                 "vod_pic": pic,
                 "vod_remarks": duration,
                 "vod_content": title,
-                "vod_play_from": "青娱乐",
-                "vod_play_url": f"正片${play_url}",
+                "vod_play_from": "直链$$$嗅探",
+                "vod_play_url": f"正片${vod_id}$$$正片$sniff:{vod_id}",
             })
         return {"list": results}
 
@@ -179,33 +176,56 @@ class Spider(_BaseSpider):
 
     def playerContent(self, *args):
         flag = args[0] if args else ""
-        play_id = args[1] if len(args) > 1 else ""
-        url = str(play_id)
-        if url.startswith("function/0/"):
-            url = url[len("function/0/"):]
-        elif url.startswith("function/"):
-            parts = url.split("/", 2)
-            url = parts[-1] if len(parts) >= 3 else url
-        if not self.isVideoFormat(url) and ("/" in url or url.isdigit()):
-            detail_path = url if "/" in url else url
-            html = self._fetch(f"{self.HOST}/videos/{detail_path}/")
-            extracted = self._extract_play(html)
-            if extracted:
-                url = extracted
-        if not url.startswith("http"):
-            url = self.HOST.rstrip("/") + "/" + url.lstrip("/")
+        play_id = str(args[1] if len(args) > 1 else "")
         header = {
             "User-Agent": self.UA,
             "Referer": self.rawSite + "/",
             "Origin": self.rawSite,
+            "Accept": "*/*",
         }
+        # sniff line: let shell parse the detail page
+        if play_id.startswith("sniff:"):
+            detail_path = play_id[6:]
+            return {
+                "parse": 1,
+                "jx": 0,
+                "url": f"{self.rawSite}/videos/{detail_path}/",
+                "header": header,
+            }
+        detail_path = play_id
+        url = ""
+        if play_id.startswith("http") and "get_file" in play_id:
+            url = play_id
+            if url.startswith("function/0/"):
+                url = url[len("function/0/"):]
+        elif play_id.startswith("function/"):
+            parts = play_id.split("/", 2)
+            url = parts[-1] if len(parts) >= 3 else play_id
+        else:
+            if play_id.startswith("http") and "/videos/" in play_id:
+                detail_path = play_id.split("/videos/")[-1].strip("/")
+            html = self._fetch(f"{self.HOST}/videos/{detail_path}/")
+            url = self._extract_play(html)
+            if not url:
+                return {
+                    "parse": 1,
+                    "jx": 0,
+                    "url": f"{self.rawSite}/videos/{detail_path}/",
+                    "header": header,
+                }
+        if url.startswith("function/0/"):
+            url = url[len("function/0/"):]
+        if not url.startswith("http"):
+            url = self.HOST.rstrip("/") + "/" + url.lstrip("/")
+        header["Referer"] = f"{self.rawSite}/videos/{detail_path}/" if detail_path else self.rawSite + "/"
         return {
             "parse": 0,
             "jx": 0,
             "url": url,
             "header": header,
-            "format": "video/mp4" if ".mp4" in url else "application/x-mpegURL",
+            "format": "video/mp4" if ".mp4" in url.lower() else "application/x-mpegURL",
         }
+
 
     def localProxy(self, *args):
         return [404, "text/plain", ""]
