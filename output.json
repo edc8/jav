@@ -200,6 +200,15 @@
             "filterable": 1
         },
         {
+            "key": "py_md（墙）",
+            "name": "🐍 md（墙）",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/md（墙）.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_zhenshi",
             "name": "🐍 zhenshi",
             "type": 3,
