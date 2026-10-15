@@ -11,19 +11,11 @@ class Spider(_BaseSpider):
         self.siteUrl = "https://qyul32.com"
         self.HOST = self.siteUrl
         self.UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
-        self.headers = {
-            "User-Agent": self.UA,
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.6",
-            "Accept-Encoding": "gzip, deflate",
-            "Referer": self.rawSite + "/",
-            "Origin": self.rawSite,
-        }
         self._skip_kw = ("萝莉", "幼女", "少女", "童", "loli", "teen", "schoolgirl", "未成年")
         self._cate_map = [
-            ("latest", "最近更新"),
-            ("top", "最高评分"),
             ("popular", "最受欢迎"),
+            ("top", "最高评分"),
+            ("latest", "最近更新"),
             ("601c6e304bc693e1bd7c4eec220a108a", "欧美"),
             ("12ec88fd4018334ab558035800fe84c9", "巨乳美胸"),
             ("3d0bc19e00144fc3ffb2997796c0fc4b", "角色扮演"),
@@ -47,6 +39,7 @@ class Spider(_BaseSpider):
             ("1ca5e841046fd0b342d5e8e810674793", "足交"),
             ("dc3f3b4ec8b1519822a90752efc57f1f", "有码"),
         ]
+        self._sess = None
 
     def getName(self):
         return "青娱乐"
@@ -68,8 +61,7 @@ class Spider(_BaseSpider):
                         self.HOST = self.siteUrl
             except Exception:
                 pass
-        self.headers["Referer"] = self.rawSite + "/"
-        self.headers["Origin"] = self.rawSite
+        self._sess = None
 
     def homeContent(self, *args):
         classes = [{"type_id": tid, "type_name": name} for tid, name in self._cate_map]
@@ -117,14 +109,10 @@ class Spider(_BaseSpider):
             vod_id = str(vod_id).strip()
             if not vod_id:
                 continue
-            if "/" in vod_id:
-                url = f"{self.HOST}/videos/{vod_id}/"
-            else:
-                url = f"{self.HOST}/videos/{vod_id}/"
-            html = self._fetch(url)
+            html = self._fetch(f"{self.HOST}/videos/{vod_id}/")
             if not html:
                 continue
-            title = self._re_one(r'<title>([^<]+)</title>', html) or vod_id
+            title = self._re_one(r"<title>([^<]+)</title>", html) or vod_id
             title = title.replace(" - 青娱乐", "").replace("青娱乐", "").strip()
             if self._is_skip(title):
                 continue
@@ -132,11 +120,15 @@ class Spider(_BaseSpider):
             if not pic:
                 pic = self._re_one(r'preview_url:\s*[\'"]([^\'"]+)[\'"]', html) or ""
             duration = self._re_one(r'class="duration"[^>]*>([^<]+)<', html) or ""
+            is_vip = ("仅限VIP" in html) or ("no-player" in html and "video_url:" not in html)
+            remarks = duration
+            if is_vip:
+                remarks = (("VIP " + duration).strip() if duration else "VIP")
             results.append({
                 "vod_id": vod_id,
                 "vod_name": title,
                 "vod_pic": pic,
-                "vod_remarks": duration,
+                "vod_remarks": remarks,
                 "vod_content": title,
                 "vod_play_from": "直链$$$嗅探",
                 "vod_play_url": f"正片${vod_id}$$$正片$sniff:{vod_id}",
@@ -175,57 +167,46 @@ class Spider(_BaseSpider):
         }
 
     def playerContent(self, *args):
-        flag = args[0] if args else ""
         play_id = str(args[1] if len(args) > 1 else "")
-        header = {
+        header_base = {
             "User-Agent": self.UA,
-            "Referer": self.rawSite + "/",
-            "Origin": self.rawSite,
             "Accept": "*/*",
+            "Accept-Language": "zh-CN,zh;q=0.9",
+            "Origin": self.rawSite,
         }
-        # sniff line: let shell parse the detail page
         if play_id.startswith("sniff:"):
-            detail_path = play_id[6:]
+            path = play_id[6:]
+            vid = path.split("/")[0]
+            return {
+                "parse": 1,
+                "jx": 0,
+                "url": f"{self.rawSite}/embed/{vid}",
+                "header": {**header_base, "Referer": self.rawSite + "/"},
+            }
+        detail_path = play_id
+        if play_id.startswith("http") and "/videos/" in play_id:
+            detail_path = play_id.split("/videos/")[-1].strip("/")
+        real_url, cookie_str, detail_url = self._resolve_play(detail_path)
+        if not real_url:
             return {
                 "parse": 1,
                 "jx": 0,
                 "url": f"{self.rawSite}/videos/{detail_path}/",
-                "header": header,
+                "header": {**header_base, "Referer": self.rawSite + "/"},
             }
-        detail_path = play_id
-        url = ""
-        if play_id.startswith("http") and "get_file" in play_id:
-            url = play_id
-            if url.startswith("function/0/"):
-                url = url[len("function/0/"):]
-        elif play_id.startswith("function/"):
-            parts = play_id.split("/", 2)
-            url = parts[-1] if len(parts) >= 3 else play_id
-        else:
-            if play_id.startswith("http") and "/videos/" in play_id:
-                detail_path = play_id.split("/videos/")[-1].strip("/")
-            html = self._fetch(f"{self.HOST}/videos/{detail_path}/")
-            url = self._extract_play(html)
-            if not url:
-                return {
-                    "parse": 1,
-                    "jx": 0,
-                    "url": f"{self.rawSite}/videos/{detail_path}/",
-                    "header": header,
-                }
-        if url.startswith("function/0/"):
-            url = url[len("function/0/"):]
-        if not url.startswith("http"):
-            url = self.HOST.rstrip("/") + "/" + url.lstrip("/")
-        header["Referer"] = f"{self.rawSite}/videos/{detail_path}/" if detail_path else self.rawSite + "/"
+        header = {
+            **header_base,
+            "Referer": detail_url or (self.rawSite + "/"),
+        }
+        if cookie_str:
+            header["Cookie"] = cookie_str
         return {
             "parse": 0,
             "jx": 0,
-            "url": url,
+            "url": real_url,
             "header": header,
-            "format": "video/mp4" if ".mp4" in url.lower() else "application/x-mpegURL",
+            "format": "video/mp4",
         }
-
 
     def localProxy(self, *args):
         return [404, "text/plain", ""]
@@ -233,7 +214,7 @@ class Spider(_BaseSpider):
     def isVideoFormat(self, url):
         if not url:
             return False
-        u = url.lower()
+        u = str(url).lower()
         return any(x in u for x in (".mp4", ".m3u8", ".flv", "get_file"))
 
     def manualVideoCheck(self):
@@ -243,92 +224,109 @@ class Spider(_BaseSpider):
         return ""
 
     def destroy(self):
-        pass
+        self._sess = None
 
-    def _fetch(self, url):
+    def _session(self):
+        import requests
+        if self._sess is None:
+            self._sess = requests.Session()
+            self._sess.headers.update({
+                "User-Agent": self.UA,
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.6",
+                "Accept-Encoding": "gzip, deflate",
+            })
+        return self._sess
+
+    def _fetch(self, url, referer=None):
         try:
-            import requests
-            r = requests.get(url, headers=self.headers, timeout=15, allow_redirects=True)
+            sess = self._session()
+            h = {"Referer": referer or (self.rawSite + "/")}
+            r = sess.get(url, headers=h, timeout=20, allow_redirects=True)
             r.encoding = r.apparent_encoding or "utf-8"
             return r.text
         except Exception:
             return ""
+
+    def _resolve_play(self, detail_path):
+        import re
+        detail_url = f"{self.HOST}/videos/{detail_path}/"
+        try:
+            sess = self._session()
+            r = sess.get(detail_url, headers={"Referer": self.rawSite + "/"}, timeout=20, allow_redirects=True)
+            r.encoding = r.apparent_encoding or "utf-8"
+            html = r.text
+            cookie_str = "; ".join([f"{c.name}={c.value}" for c in sess.cookies])
+            m = re.search(r"video_url:\s*['\"]([^'\"]+)['\"]", html)
+            if not m:
+                m = re.search(r"['\"](https?://[^'\"]+get_file/[^'\"]+\.mp4[^'\"]*)['\"]", html)
+            if not m:
+                return "", cookie_str, detail_url
+            url = m.group(1)
+            if url.startswith("function/0/"):
+                url = url[len("function/0/"):]
+            elif url.startswith("function/"):
+                parts = url.split("/", 2)
+                url = parts[-1] if len(parts) >= 3 else url
+            if not url.startswith("http"):
+                url = self.HOST.rstrip("/") + "/" + url.lstrip("/")
+            return url, cookie_str, detail_url
+        except Exception:
+            return "", "", detail_url
 
     def _parse_list(self, html):
         if not html:
             return []
         import re
         vods = []
-        pattern = re.compile(
-            r'<a\s+href="(https?://[^"]*?/videos/(\d+)/([^"/]+)/?)"[^>]*title="([^"]*)"[^>]*>.*?'
-            r'(?:data-original|src)="(https?://[^"]+videos_screenshots[^"]+)"[^>]*>.*?'
-            r'(?:class="duration"[^>]*>([^<]*)<)?',
-            re.S | re.I
+        items = re.findall(
+            r'href="(https?://[^"]*?/videos/(\d+)/([^"/]+)/?)"[^>]*title="([^"]*)"',
+            html, re.I
         )
-        for m in pattern.finditer(html):
-            href, vid, slug, title, pic, duration = m.groups()
+        seen = set()
+        for href, vid, slug, title in items:
             title = (title or "").strip()
-            if self._is_skip(title):
+            if self._is_skip(title) or vid in seen:
                 continue
-            vod_id = f"{vid}/{slug}"
-            vods.append({
-                "vod_id": vod_id,
-                "vod_name": title,
-                "vod_pic": pic or "",
-                "vod_remarks": (duration or "").strip(),
-            })
-        if not vods:
-            items = re.findall(
-                r'href="(https?://[^"]*?/videos/(\d+)/([^"/]+)/?)"[^>]*title="([^"]*)"',
-                html, re.I
+            seen.add(vid)
+            pic = ""
+            pm = re.search(
+                rf'videos/{vid}/[^"]*".*?(?:data-original|src)="(https?://[^"]+videos_screenshots[^"]+)"',
+                html, re.S | re.I
             )
-            seen = set()
-            for href, vid, slug, title in items:
-                title = (title or "").strip()
-                if self._is_skip(title) or vid in seen:
-                    continue
-                seen.add(vid)
-                pic = ""
-                pm = re.search(rf'videos/{vid}/[^"]+".*?data-original="(https?://[^"]+)"', html, re.S)
-                if pm:
-                    pic = pm.group(1)
-                vods.append({
-                    "vod_id": f"{vid}/{slug}",
-                    "vod_name": title,
-                    "vod_pic": pic,
-                    "vod_remarks": "",
-                })
+            if pm:
+                pic = pm.group(1)
+            dur = ""
+            dm = re.search(
+                rf'videos/{vid}/[^"]*".*?class="duration"[^>]*>([^<]+)<',
+                html, re.S | re.I
+            )
+            if dm:
+                dur = dm.group(1).strip()
+            vods.append({
+                "vod_id": f"{vid}/{slug}",
+                "vod_name": title,
+                "vod_pic": pic,
+                "vod_remarks": dur,
+            })
         return vods
 
     def _parse_pagecount(self, html, cur):
         if not html:
             return cur
         import re
-        nums = re.findall(r'/(?:latest-updates|top-rated|most-popular|categories/[^/]+|search/[^/]+)/(\d+)/', html)
+        nums = re.findall(
+            r'/(?:latest-updates|top-rated|most-popular|categories/[^/]+|search/[^/]+)/(\d+)/',
+            html
+        )
         if nums:
             try:
                 return max(int(n) for n in nums)
             except Exception:
                 pass
-        if re.search(r'下一页|next|末頁|末页', html, re.I):
+        if re.search(r"下一页|next|末頁|末页", html, re.I):
             return cur + 1
         return cur
-
-    def _extract_play(self, html):
-        import re
-        m = re.search(r"video_url:\s*['\"]([^'\"]+)['\"]", html)
-        if m:
-            u = m.group(1)
-            if u.startswith("function/0/"):
-                u = u[len("function/0/"):]
-            elif u.startswith("function/"):
-                parts = u.split("/", 2)
-                u = parts[-1] if len(parts) >= 3 else u
-            return u
-        m = re.search(r'["\'](https?://[^"\']+get_file/[^"\']+\.mp4[^"\']*)["\']', html)
-        if m:
-            return m.group(1)
-        return ""
 
     def _is_skip(self, text):
         if not text:
