@@ -290,6 +290,15 @@
             "filterable": 1
         },
         {
+            "key": "py_vjav",
+            "name": "🐍 vjav",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/vjav.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_tokyomotion",
             "name": "🐍 tokyomotion",
             "type": 3,
