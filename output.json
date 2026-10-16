@@ -11,15 +11,6 @@
             "filterable": 1
         },
         {
-            "key": "py_悟空传媒",
-            "name": "🐍 悟空传媒",
-            "type": 3,
-            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/悟空传媒.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_蘑菇影院",
             "name": "🐍 蘑菇影院",
             "type": 3,
