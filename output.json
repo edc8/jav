@@ -200,6 +200,15 @@
             "filterable": 1
         },
         {
+            "key": "py_东京热（墙）",
+            "name": "🐍 东京热（墙）",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/东京热（墙）.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_乱伦仓库🔞TG群：@tvshare23",
             "name": "🐍 乱伦仓库🔞TG群：@tvshare23",
             "type": 3,
@@ -429,15 +438,6 @@
             "name": "🐍 前妻的丝袜",
             "type": 3,
             "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/前妻的丝袜.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
-            "key": "py_东京热",
-            "name": "🐍 东京热",
-            "type": 3,
-            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/东京热.py",
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1
