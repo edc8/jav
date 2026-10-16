@@ -101,15 +101,6 @@
             "filterable": 1
         },
         {
-            "key": "py_无码之家",
-            "name": "🐍 无码之家",
-            "type": 3,
-            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/无码之家.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_花真好影视",
             "name": "🐍 花真好影视",
             "type": 3,
