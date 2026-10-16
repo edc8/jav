@@ -20,6 +20,15 @@
             "filterable": 1
         },
         {
+            "key": "py_avjoyme（墙）",
+            "name": "🐍 avjoyme（墙）",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/avjoyme（墙）.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_快乐星球",
             "name": "🐍 快乐星球",
             "type": 3,
@@ -339,15 +348,6 @@
             "name": "🐍 成人卡通(746分类)",
             "type": 3,
             "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/成人卡通(746分类).py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
-            "key": "py_avjoyme",
-            "name": "🐍 avjoyme",
-            "type": 3,
-            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/avjoyme.py",
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1
