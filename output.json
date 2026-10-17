@@ -146,6 +146,15 @@
             "filterable": 1
         },
         {
+            "key": "py_catemby",
+            "name": "🐍 catemby",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/catemby.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_大香蕉",
             "name": "🐍 大香蕉",
             "type": 3,
@@ -492,6 +501,15 @@
             "name": "🐍 狼友天堂",
             "type": 3,
             "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/狼友天堂.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_dadiaoshipin",
+            "name": "🐍 dadiaoshipin",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/dadiaoshipin.py",
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1
