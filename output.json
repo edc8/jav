@@ -20,15 +20,6 @@
             "filterable": 1
         },
         {
-            "key": "py_hanjubashi",
-            "name": "🐍 hanjubashi",
-            "type": 3,
-            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/hanjubashi.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_luolidaoxf",
             "name": "🐍 luolidaoxf",
             "type": 3,
