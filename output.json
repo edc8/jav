@@ -2,10 +2,28 @@
     "spider": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/custom_spider.jar",
     "sites": [
         {
+            "key": "py_heiliaobudayang",
+            "name": "🐍 heiliaobudayang",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/heiliaobudayang.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_小红薯APP🔞TG群：@tvshare23",
             "name": "🐍 小红薯APP🔞TG群：@tvshare23",
             "type": 3,
             "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/小红薯APP🔞TG群：@tvshare23.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_hanjubashi",
+            "name": "🐍 hanjubashi",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/hanjubashi.py",
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1
@@ -83,10 +101,46 @@
             "filterable": 1
         },
         {
+            "key": "py_hohoj",
+            "name": "🐍 hohoj",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/hohoj.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_gaoduanshipin",
+            "name": "🐍 gaoduanshipin",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/gaoduanshipin.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_xx9",
             "name": "🐍 xx9",
             "type": 3,
             "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/xx9.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_EBA",
+            "name": "🐍 EBA",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/EBA.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_freeporn",
+            "name": "🐍 freeporn",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/freeporn.py",
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1
@@ -101,6 +155,15 @@
             "filterable": 1
         },
         {
+            "key": "py_fulao2",
+            "name": "🐍 fulao2",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/fulao2.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_香女园",
             "name": "🐍 香女园",
             "type": 3,
@@ -110,10 +173,28 @@
             "filterable": 1
         },
         {
+            "key": "py_getav",
+            "name": "🐍 getav",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/getav.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_shewo",
             "name": "🐍 shewo",
             "type": 3,
             "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/shewo.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_GG51",
+            "name": "🐍 GG51",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/GG51.py",
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1
@@ -272,6 +353,15 @@
             "filterable": 1
         },
         {
+            "key": "py_FullHD",
+            "name": "🐍 FullHD",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/FullHD.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_淫母原味🔞TG群：@tvshare23",
             "name": "🐍 淫母原味🔞TG群：@tvshare23",
             "type": 3,
@@ -344,6 +434,15 @@
             "filterable": 1
         },
         {
+            "key": "py_FCJAVXF",
+            "name": "🐍 FCJAVXF",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/FCJAVXF.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_溏心次元🔞TG群：@tvshare23",
             "name": "🐍 溏心次元🔞TG群：@tvshare23",
             "type": 3,
@@ -407,6 +506,15 @@
             "filterable": 1
         },
         {
+            "key": "py_heiliaowang",
+            "name": "🐍 heiliaowang",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/heiliaowang.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_zhenshi",
             "name": "🐍 zhenshi",
             "type": 3,
@@ -425,10 +533,28 @@
             "filterable": 1
         },
         {
+            "key": "py_hemayingshi",
+            "name": "🐍 hemayingshi",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/hemayingshi.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_caoliushequ",
             "name": "🐍 caoliushequ",
             "type": 3,
             "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/caoliushequ.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_hanguoseqingdianying",
+            "name": "🐍 hanguoseqingdianying",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/hanguoseqingdianying.py",
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1
@@ -479,6 +605,15 @@
             "filterable": 1
         },
         {
+            "key": "py_hubff",
+            "name": "🐍 hubff",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/hubff.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_BadNews",
             "name": "🐍 BadNews",
             "type": 3,
@@ -501,6 +636,15 @@
             "name": "🐍 狼友天堂",
             "type": 3,
             "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/狼友天堂.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_EPORNER",
+            "name": "🐍 EPORNER",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/EPORNER.py",
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1
@@ -569,6 +713,15 @@
             "filterable": 1
         },
         {
+            "key": "py_huangsecangkudongtaiban",
+            "name": "🐍 huangsecangkudongtaiban",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/huangsecangkudongtaiban.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_2048成人短剧",
             "name": "🐍 2048成人短剧",
             "type": 3,
@@ -600,6 +753,15 @@
             "name": "🐍 成人卡通(746分类)",
             "type": 3,
             "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/成人卡通(746分类).py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_haolaiwuyingyuan",
+            "name": "🐍 haolaiwuyingyuan",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/haolaiwuyingyuan.py",
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1
@@ -650,6 +812,15 @@
             "filterable": 1
         },
         {
+            "key": "py_haijiaoluanlun",
+            "name": "🐍 haijiaoluanlun",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/haijiaoluanlun.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "py_AdultpornaAV",
             "name": "🐍 AdultpornaAV",
             "type": 3,
@@ -690,6 +861,15 @@
             "name": "🐍 蜜桃臀",
             "type": 3,
             "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/蜜桃臀.py",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "py_guosetianxiang",
+            "name": "🐍 guosetianxiang",
+            "type": 3,
+            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/guosetianxiang.py",
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1
