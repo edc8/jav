@@ -1,151 +1,309 @@
-import json, re, urllib.parse, sys, os, threading
-_orig = os.getcwd
-def _poc():
-    try: return _orig()
-    except: return "/data/data/com.termux/files/usr/lib"
-os.getcwd = _poc
-_ts = threading.Thread.start
-def _tp(self):
-    if self._target: self._target(*self._args, **self._kwargs)
-threading.Thread.start = _tp
-sys.path[0] = "/usr/lib/python3/dist-packages:/usr/local/lib/python3.12/dist-packages"
-import requests
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-class Spider:
-    UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36"
-    NAME = "\u82b1\u5343\u8272"
-    HOST = "https://eetftz.hqs2.homes"
-    CATS = {"20":"\u4e9a\u6d32\u60c5\u8272","21":"\u5236\u670d\u5e08\u751f","22":"\u5361\u901a\u52a8\u6f2b","23":"\u4e09\u7ea7\u4f26\u7406","24":"\u5f3a\u5978\u4e71\u4f26","25":"\u5077\u62cd\u81ea\u62cd","26":"\u4e2d\u6587\u5b57\u5e55","27":"\u6b27\u7f8e\u6027\u7231","28":"\u4eba\u59bb\u719f\u5973","29":"\u65e0\u7801\u4e13\u533a"}
-    _s = None
+import sys
+import os
+import re
+import json
+import base64
+import html as html_lib
+import urllib.request
+import urllib.parse
+import http.cookiejar
+import gzip
+import zlib
+import ssl
 
-    def _sess(self):
-        if not self._s:
-            self._s = requests.Session()
-            self._s.headers.update({"User-Agent":self.UA,"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Accept-Language":"zh-CN,zh;q=0.9","Referer":self.HOST+"/"})
-        return self._s
+try:
+    from base.spider import Spider as SpiderBase
+except ImportError:
+    class SpiderBase(object):
+        pass
 
-    def _get(self, url):
-        try:
-            r = self._sess().get(url, timeout=20, verify=False)
-            r.encoding = r.apparent_encoding or "utf-8"
-            return r.text
-        except: return ""
 
-    def _abs(self, p):
-        if p.startswith("http"): return p
-        if p.startswith("//"): return "https:"+p
-        return self.HOST.rstrip("/")+"/"+p.lstrip("/")
-
-    def _parse_items(self, html):
-        items = []
-        seen = set()
-        for m in re.finditer(r'<a class="title" href="/(\d+)\.html">([^<]+)</a>', html):
-            vid = m.group(1)
-            if vid in seen: continue
-            seen.add(vid)
-            title = m.group(2).strip()
-            pic_m = re.search(r'href="/' + vid + r'\.html"[^>]*>.*?<img[^>]+src="([^"]+)"', html, re.S)
-            pic = pic_m.group(1) if pic_m else ""
-            dt_m = re.search(r'href="/' + vid + r'\.html"[^>]*>.*?<span>([^<]+)</span>', html, re.S)
-            dt = dt_m.group(1).strip() if dt_m else ""
-            items.append({"vod_id":vid,"vod_name":title,"vod_pic":pic,"vod_remarks":dt,"vod_year":"","vod_area":"","vod_actor":"","vod_director":"","vod_content":""})
-        return items
-
-    def getDependence(self):
-        return ""
+class Spider(SpiderBase):
+    def __init__(self):
+        super(Spider, self).__init__()
+        self.siteUrl = "https://eetftz.hqs2.homes"
+        self.tgGroup = "https://t.me/yingshifx1"
+        self.brandActor = "🎬 TG群: @yingshifx1"
+        self.brandDirector = "🎬 自建影视"
+        self._ua = "Mozilla/5.0 (Linux; Android 12; Pixel 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.6478.134 Mobile Safari/537.36"
 
     def init(self, extend=""):
-        self._s = None
         return True
 
-    def homeContent(self, filter=False):
-        cls = [{"type_id":k,"type_name":v} for k,v in self.CATS.items()]
-        flt = {k:[{"key":"sort","name":"\u6392\u5e8f","init":"","value":[{"n":"\u6700\u65b0","v":""},{"n":"\u6700\u70ed","v":"hot"}]}] for k in self.CATS}
-        vl = []
-        html = self._get(self.HOST+"/cn/home/web/")
-        if html: vl = self._parse_items(html)[:20]
-        return {"class":cls,"filters":flt,"list":vl}
-
-    def homeVideoContent(self):
-        vl = []
-        html = self._get(self.HOST+"/cn/home/web/")
-        if html: vl = self._parse_items(html)
-        return {"page":1,"pagecount":1,"limit":20,"total":len(vl),"list":vl}
-
-    def categoryContent(self, tid, pg=1, filter="", extend=""):
-        pg = int(pg) if pg else 1
-        if extend and "hot" in str(extend):
-            url = self._abs("/label/hot.html")
-        else:
-            url = self._abs(f"/vodtype/{tid}.html") if pg==1 else self._abs(f"/vodtype/{tid}-{pg}.html")
-        html = self._get(url)
-        vl = self._parse_items(html) if html else []
-        nxt = bool(re.search(rf'href="/vodtype/{re.escape(str(tid))}-{pg+1}\.html"', html)) if html else False
-        return {"page":pg,"pagecount":pg+1 if nxt else pg,"limit":20,"total":len(vl),"list":vl}
-
-    def detailContent(self, ids):
-        if not isinstance(ids,(list,tuple)): ids=[ids]
-        res = []
-        for vid in ids:
-            vid = str(vid).strip()
-            html = self._get(self._abs(f"/{vid}.html"))
-            if not html: continue
-            tm = re.search(r'class="title main-head-title"[^>]*>([^<]+)', html)
-            if not tm: tm = re.search(r'<title>([^<-]+)', html)
-            title = tm.group(1).strip() if tm else ""
-            pm = re.search(r'property="og:image"[^>]*content="([^"]+)"', html)
-            pic = pm.group(1) if pm else ""
-            cm = re.search(r'fa fa-flag"[^>]*></i>([^<]+)', html)
-            vc = cm.group(1).strip() if cm else ""
-            mm = re.search(r"const\s+rawUrl\s*=\s*'([^']+)'", html)
-            mu = mm.group(1) if mm else ""
-            if not mu:
-                m2 = re.search(r'https?://[^\s$#"\'<>]+\.m3u8[^\s$#"\'<>]*', html)
-                mu = m2.group(0) if m2 else ""
-            vod = {"vod_id":vid,"vod_name":title,"vod_pic":pic,"vod_class":vc,"type_name":vc,"vod_year":"","vod_area":"","vod_actor":"","vod_director":"","vod_remarks":"","vod_content":"","vod_play_from":self.NAME,"vod_play_url":""}
-            if mu: vod["vod_play_url"] = "$"+mu
-            res.append(vod)
-        return {"list":res}
-
-    def searchContent(self, key, quick=False):
-        k = urllib.parse.quote(str(key))
-        html = self._get(self._abs(f"/s/{k}.html"))
-        vl = self._parse_items(html) if html else []
-        return {"page":1,"pagecount":1,"limit":20,"total":len(vl),"list":vl}
-
-    def playerContent(self, flag, id, vipFlags=""):
-        return {"parse":0,"jx":0,"url":id,"header":{"User-Agent":self.UA,"Referer":self.HOST+"/"},"format":"application/x-mpegURL"}
-
-    def localProxy(self, param):
-        return [404,"text/plain",""]
-
     def isVideoFormat(self, url):
-        return ".m3u8" in url or ".mp4" in url or ".flv" in url
+        low = (url or "").lower()
+        return any(k in low for k in (".m3u8", ".mp4", ".flv", ".mkv", ".avi", ".ts"))
 
     def manualVideoCheck(self):
         return False
 
-    def action(self, action):
-        return ""
+    def _build_opener(self):
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        cj = http.cookiejar.CookieJar()
+        return urllib.request.build_opener(
+            urllib.request.HTTPCookieProcessor(cj),
+            urllib.request.HTTPSHandler(context=ctx)
+        )
 
-    def destroy(self):
+    def _fetch(self, target_url):
+        if not target_url:
+            return {"code": 0, "text": "", "err": ""}
+        if target_url.startswith("/"):
+            target_url = self.siteUrl.rstrip("/") + target_url
+
+        headers = {
+            "User-Agent": self._ua,
+            "Referer": self.siteUrl + "/hqs/",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+            "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
+            "Sec-Ch-Ua": '"Chromium";v="126", "Not?A_Brand";v="8", "Android Chrome";v="126"',
+            "Sec-Ch-Ua-Mobile": "?1",
+            "Sec-Ch-Ua-Platform": '"Android"',
+            "Sec-Fetch-Dest": "document",
+            "Sec-Fetch-Mode": "navigate",
+            "Sec-Fetch-Site": "same-origin",
+            "Sec-Fetch-User": "?1",
+            "Upgrade-Insecure-Requests": "1"
+        }
+
         try:
-            if self._s: self._s.close()
-        except: pass
+            opener = self._build_opener()
+            req = urllib.request.Request(target_url, headers=headers)
+            with opener.open(req, timeout=12) as resp:
+                code = resp.getcode()
+                raw = resp.read()
+                if raw.startswith(b"\x1f\x8b"):
+                    raw = gzip.decompress(raw)
+                elif getattr(resp, "headers", {}).get("Content-Encoding") == "deflate":
+                    try:
+                        raw = zlib.decompress(raw)
+                    except Exception:
+                        raw = zlib.decompress(raw, -zlib.MAX_WBITS)
+                try:
+                    text = raw.decode("utf-8")
+                except Exception:
+                    text = raw.decode("latin1", errors="ignore")
+                return {"code": code, "text": text, "err": ""}
+        except urllib.error.HTTPError as e:
+            err_body = ""
+            try:
+                raw_err = e.read()
+                if raw_err.startswith(b"\x1f\x8b"):
+                    raw_err = gzip.decompress(raw_err)
+                err_body = raw_err.decode("utf-8", errors="ignore")
+            except Exception:
+                pass
+            return {"code": e.code, "text": err_body, "err": "HTTPError: %s" % str(e)}
+        except Exception as e:
+            return {"code": -1, "text": "", "err": "Exception: %s" % str(e)}
 
-spider = Spider()
+    def _unesc(self, s):
+        try:
+            return html_lib.unescape(s or "").strip()
+        except Exception:
+            return (s or "").strip()
 
-if __name__ == "__main__":
-    print("=== "+spider.NAME+" ===")
-    h = spider.homeContent()
-    for c in h.get("class",[]):
-        print("  ["+c["type_id"]+"] "+c["type_name"])
-    print("Home videos:", len(h.get("list",[])))
-    if h.get("list"):
-        v = h["list"][0]
-        print("  First:", v["vod_name"])
-        d = spider.detailContent([v["vod_id"]])
-        if d.get("list"):
-            dd = d["list"][0]
-            print("  Detail:", dd["vod_name"])
-            print("  Play:", dd["vod_play_url"][:100])
+    # 1. 首页：纯内存静态返回 10 个核心分类，零网络阻塞
+    def homeContent(self, filter=False):
+        return {
+            "class": [
+                {"type_name": "亚洲情色", "type_id": "20"},
+                {"type_name": "中文字幕", "type_id": "26"},
+                {"type_name": "无码专区", "type_id": "29"},
+                {"type_name": "偷拍自拍", "type_id": "25"},
+                {"type_name": "制服师生", "type_id": "21"},
+                {"type_name": "人妻熟女", "type_id": "28"},
+                {"type_name": "强奸乱伦", "type_id": "24"},
+                {"type_name": "欧美性爱", "type_id": "27"},
+                {"type_name": "三级伦理", "type_id": "23"},
+                {"type_name": "卡通动漫", "type_id": "22"}
+            ]
+        }
+
+    def homeVideoContent(self):
+        return {"list": []}
+
+    # 2. 列表页：多级标题穿透提纯，彻底消除 "Play"
+    def categoryContent(self, tid, pg="1", filter=False, extend=None):
+        page_num = str(pg or "1").strip()
+        tid = str(tid).strip()
+
+        if page_num == "1":
+            target_path = "/vodtype/%s.html" % tid
+        else:
+            target_path = "/vodtype/%s-%s.html" % (tid, page_num)
+
+        res = self._fetch(target_path)
+        html_text = res.get("text", "")
+
+        card_matches = re.findall(r'(<a[^>]+href=["\']([^"\']*(?:/\d+\.html|/voddetail/|/vodplay/)[^"\']*)["\'][^>]*>([\s\S]*?)</a>)', html_text, re.I)
+
+        vod_dict = {}  # 用于按 clean_href 去重并优先保留真实长标题
+
+        for full_a, v_href, inner in card_matches:
+            clean_href = v_href.strip()
+            if "vodtype" in clean_href:
+                continue
+
+            # 多层级解析真实标题：img alt -> title 属性 -> 内部文本
+            title = ""
+            alt_m = re.search(r'<img[^>]+alt=["\']([^"\']+)["\']', inner, re.I)
+            if alt_m and alt_m.group(1).strip() and alt_m.group(1).strip().lower() != "play":
+                title = alt_m.group(1).strip()
+
+            if not title:
+                title_m = re.search(r'title=["\']([^"\']+)["\']', full_a, re.I)
+                if title_m and title_m.group(1).strip() and title_m.group(1).strip().lower() != "play":
+                    title = title_m.group(1).strip()
+
+            if not title:
+                text_clean = re.sub(r'<[^>]+>', '', inner).strip()
+                if text_clean and text_clean.lower() != "play":
+                    title = text_clean
+
+            # 图片提取
+            pic = ""
+            img_m = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', inner, re.I)
+            if not img_m:
+                img_m = re.search(r'<img[^>]+data-original=["\']([^"\']+)["\']', inner, re.I)
+            if img_m:
+                val = img_m.group(1).strip()
+                if not val.startswith("data:image"):
+                    pic = val
+
+            if pic.startswith("//"):
+                pic = "https:" + pic
+            elif pic.startswith("/"):
+                pic = self.siteUrl.rstrip("/") + pic
+
+            if clean_href not in vod_dict:
+                vod_dict[clean_href] = {
+                    "title": title if title else "精彩视频",
+                    "pic": pic
+                }
+            else:
+                # 若已存在但当前抓到了更长的有效标题，进行覆盖
+                if title and len(title) > len(vod_dict[clean_href]["title"]):
+                    vod_dict[clean_href]["title"] = title
+                if not vod_dict[clean_href]["pic"] and pic:
+                    vod_dict[clean_href]["pic"] = pic
+
+        vod_list = []
+        for href, item in vod_dict.items():
+            t = item["title"]
+            if any(k in t for k in ("下一页", "上一页", "首页", "尾页", "返回")):
+                continue
+
+            safe_id = "v_" + base64.urlsafe_b64encode(href.encode("utf-8")).decode("utf-8").rstrip("=")
+            vod_list.append({
+                "vod_id": safe_id,
+                "vod_name": self._unesc(t),
+                "vod_pic": item["pic"],
+                "vod_remarks": "高清"
+            })
+
+        return {
+            "page": int(page_num),
+            "pagecount": 99,
+            "limit": len(vod_list),
+            "total": 99,
+            "list": vod_list
+        }
+
+    # 3. 详情页：直接起播与标准简介注入
+    def detailContent(self, ids):
+        try:
+            if isinstance(ids, (list, tuple)):
+                raw_id = ids[0] if ids else ""
+            else:
+                raw_id = str(ids or "")
+            raw_id = str(raw_id).strip()
+
+            play_path = ""
+            if raw_id.startswith("v_"):
+                b64_str = raw_id[2:]
+                pad = len(b64_str) % 4
+                if pad:
+                    b64_str += "=" * (4 - pad)
+                play_path = base64.urlsafe_b64decode(b64_str.encode("utf-8")).decode("utf-8")
+            else:
+                play_path = raw_id
+
+            if not play_path:
+                return {"list": []}
+
+            res = self._fetch(play_path)
+            html_text = res.get("text", "")
+
+            # 提取真实标题
+            title_m = re.search(r'<title>(.*?)</title>', html_text, re.I)
+            page_title = title_m.group(1).strip() if title_m else "精彩视频"
+            page_title = re.sub(r'(-|\||_).*$', '', page_title).strip()
+
+            # 核心嗅探播放直链
+            raw_url = ""
+            p_match = re.search(r'(?:player_data|player_aaaa)[\s\S]*?["\']url["\']\s*:\s*["\']([^"\']+)["\']', html_text)
+            if p_match:
+                raw_url = p_match.group(1).strip()
+
+            if not raw_url:
+                m3u8_m = re.search(r'["\'](https?://[^"\']+\.m3u8[^"\']*)["\']', html_text, re.I)
+                if m3u8_m:
+                    raw_url = m3u8_m.group(1).strip()
+                else:
+                    mp4_m = re.search(r'["\'](https?://[^"\']+\.mp4[^"\']*)["\']', html_text, re.I)
+                    if mp4_m:
+                        raw_url = mp4_m.group(1).strip()
+
+            decrypted_url = raw_url.replace(r"\/", "/") if raw_url else ""
+
+            # 简介提纯
+            desc_m = re.search(r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']+)["\']', html_text, re.I)
+            clean_content = desc_m.group(1).strip() if desc_m else ""
+
+            custom_notice = "【💡 温馨提示：视频如遇卡顿请尝试切换播放器核心或快进。】"
+            group_info = "【🔥 官方交流群: %s】" % self.tgGroup
+
+            if clean_content:
+                vod_content = "%s\n\n%s\n\n%s" % (group_info, custom_notice, clean_content)
+            else:
+                vod_content = "%s\n\n%s\n\n暂无详细简介，欢迎加入官方群交流！" % (group_info, custom_notice)
+
+            final_play_url = decrypted_url if (decrypted_url and decrypted_url.startswith("http")) else "http://127.0.0.1"
+
+            return {
+                "list": [{
+                    "vod_id": raw_id,
+                    "vod_name": self._unesc(page_title),
+                    "vod_pic": "",
+                    "vod_actor": self.brandActor,
+                    "vod_director": self.brandDirector,
+                    "vod_remarks": "高清直链",
+                    "vod_content": vod_content,
+                    "vod_play_from": "蝴蝶专线",
+                    "vod_play_url": "正片$%s" % final_play_url
+                }]
+            }
+        except Exception:
+            return {"list": []}
+
+    # 4. 播放器直连：parse: 0
+    def playerContent(self, flag, id, vipFlags):
+        real_url = str(id).strip()
+        return {
+            "parse": 0,
+            "playUrl": "",
+            "url": real_url,
+            "header": json.dumps({
+                "User-Agent": self._ua,
+                "Referer": self.siteUrl + "/"
+            })
+        }
+
+    def searchContent(self, key, quick, pg="1"):
+        return {"list": []}
