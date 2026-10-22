@@ -1856,15 +1856,6 @@
             "filterable": 1
         },
         {
-            "key": "py_supjav_spider",
-            "name": "🐍 supjav_spider",
-            "type": 3,
-            "api": "https://gh-proxy.org/https://raw.githubusercontent.com/edc8/jav/main/18/supjav_spider.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "filterable": 1
-        },
-        {
             "key": "py_hemayingshi",
             "name": "🐍 hemayingshi",
             "type": 3,
